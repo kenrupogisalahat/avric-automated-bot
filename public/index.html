@@ -1,90 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <title>🚀𝘼𝙐𝙏𝙊𝘽𝙊𝙏 -</title>
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" href="styles.css">
-   </head>
-   <body>
-      <iframe style="display: none;" width="1579" height="563" src="https://www.youtube.com/embed/AkGGFKuT6Cs?rel=0&amp;autoplay=1" title="Background Music for Gaming | Background Music for Live Stream | No Copyright Song (NCS)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-         <a class="navbar-brand" href="#">𝗛𝗢𝗠𝗘▪ </a>
-         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-         <span class="navbar-toggler-icon"></span>
-         </button>
-         <div class="collapse navbar-collapse justify-content-end" id="navbarNav" style="margin-right: 70px;">
-            <ul class="navbar-nav">
-               <li class="nav-item active">
-                  <a class="nav-link" href="/">HOME[💬] <span class="sr-only">(current)</span>
-                  </a>
-               </li>
-               <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Features </a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                     <a class="dropdown-item" href="#">Cookies Extractor</a>
-                     <div class="dropdown-divider"></div>
-                     <a class="dropdown-item" href="/step_by_step_guide">Step-by-Step Guide</a>
-                  </div>
-               </li>
-               <li class="nav-item">
-                  <a class="nav-link" href="online_user">Active</a>
-               </li>
-            </ul>
-         </div>
-      </nav>
-      <div class="container">
-         <h1 class="col text-center" style="font-size: 20px; padding: 10px;">[📑](－－〆)𝗙𝗕-𝗦𝗧𝗔𝗧𝗘</h1>
-         <form id="json-form" onsubmit="submitForm(event)">
-            <div class="row">
-               <div class="col-md-12">
-                  <textarea id="json-data" class="form-control centered-textarea center-placeholder" placeholder=""></textarea>
-               </div>
-            </div>
-         </form>
-         <p style=" margin-top: 10px">Greetings! Begin by entering your cookie. Scroll down to carefully review our Terms and Privacy.</p>
-      </div>
-      <div class="container">
-         <h1 class="col text-center" style="font-size: 20px; padding: 10px;">𝗔𝗗𝗠𝗜𝗡 𝗜𝗡𝗙𝗢</h1>
-       <img width="235" height="290" src='../image/7.jpg' alt="le prorio du Compte">
-<a href="https://www.facebook.com/MetoushelaWalker" target="_blank">
-   <button type="button">☁️𝗣𝗥𝗢𝗙𝗜𝗟 ☁️</button>
-</a>
-         <div class="container" id="listOfCommands">
-            <h1 style="font-size: 16px; padding: 10px;">𝗖𝗛𝗢𝗢𝗦𝗘 𝗧𝗛𝗘 𝗖𝗢𝗠𝗠𝗔𝗡𝗗𝘀﹝🔖﹞</h1>
-            <button class="btn btn-primary" onclick="selectAllCommands()">Select all commands</button>
-         </div>
-         <div class="container" id="listOfCommandsEvent">
-            <h1 style="font-size: 16px; padding: 10px;">𝗘𝗩𝗘𝗡𝗧 𝗖𝗢𝗠𝗠𝗔𝗡𝗗𝘀﹝🏷️﹞.</h1>
-            <button class="btn btn-primary" onclick="selectAllEvents()">Select all events</button>
-         </div>
-         <div class="container" id="prefixOfCommands">
-            <h1 style="font-size: 16px; padding: 10px;">𝗖𝗛𝗢𝗢𝗦𝗘 𝗬𝗢𝗨𝗥 𝗣𝗥𝗘𝗙𝗜𝗫 ✦ 'non-prefix' will be considered as your input</h1>
-            <input type="text" id="inputOfPrefix">
-         </div>
-         <div class="container" id="adminOfCommands">
-            <h1 style="font-size: 16px; padding: 10px;">𝗔𝗗𝗠𝗜𝗡 𝗨𝗜𝗗 ⋆ (optional). If you choose not to, entering 'default' will be considered as your input</h1>
-            <input type="text" id="inputOfAdmin">
-         </div>
-         <label style="font-size: 14px; display: flex; align-items: center; padding: 22px;">
-         <input type="checkbox" id="agreeCheckbox" style="margin-right: 10px;"> Checking this box certifies that I have read, understood, and agreed to the Terms and Conditions. </label>
-         <div class="col text-center">
-            <button class="btn btn-primary" onclick="State()" disabled id="submitButton" style="width: 100%">﹝𝙎𝙐𝘽𝙈𝙄𝙏﹞</button>
-         </div>
-      </div>
-      <div id="result" class="container text-center" style="display: none;"></div>
-      <div class="footer">
-         <p>Time: <span id="time"></span>
-         </p>
-         <p>Ping: <span id="ping"></span>
-         </p>
-      </div>
-      <script src="script.js"></script>
-      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
-   </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="image/favicon.ico">
+	<link rel="icon" href="https://i.imgur.com/AnFWx6c.jpeg" type="image/ico">
+  <link rel="shortcut icon" href="https://i.imgur.com/AnFWx6c.jpeg">
+    <title>➭𝗙𝗕-𝗕𝗢𝗧 🧑‍💻</title>
+    <style>
+        body {
+            font-family: Bahnschrift SemiBold, sans-serif;
+            background: linear-gradient(160deg, #3a0383, #0c062a, #0c062a);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            background: linear-gradient(160deg, #3a0383, #0c062a, #0c062a);
+            padding: 10%;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            width: 90%;
+            max-width: 600px;
+        }
+        h1 {
+            font-size: 2em;
+            margin-bottom: 0.5em;
+            background: linear-gradient(330deg, #febb5c, #dd9993, #febb5c, #fd7cb9, #fd7cb9, #fd7cb9, #febb5c, #dd9993, #febb5c, #fd7cb9, #fd7cb9, #febb5c, #fd7cb9, #b24afd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        p {
+            font-size: 1em;
+            margin: 1em 0;
+        }
+        .highlight {
+            font-size: 1em;
+            font-weight: bold;
+        }
+        .button {
+            background: linear-gradient(135deg, #6a40fc, #bc48fc, #f86cd3, #fa84ac, #fa919f, #faa27c, #ffb168);
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 1em;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .button:hover {
+            background: linear-gradient(135deg, #6a40fc, #bc48fc, #f86cd3, #fa84ac, #fa919f, #faa27c, #ffb168);
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 5%;
+            }
+            h1 {
+                font-size: 1.5em;
+            }
+            p, .highlight, .button {
+                font-size: 0.9em;
+            }
+        }
+        .circular-image {
+			width: 150px;
+			height: 150px;
+			border-radius: 50%;
+			border: 1px solid #ddd;
+			margin: 20px auto;
+			display: block;
+		}
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <div class="container">
+        <h1> FB-BOT</h1>
+        <p class="highlight">You may be wondering why you are here, but you are on the right page to be sent to the automated bot site. Click "explor!" to see the main website immediately.</p>
+        <p>Redirect to Official FB- Davbot Facebook Bot Website!</p><p>credit David MP</p><br>
+        <a href="FB.html" class="button">FB Davbot 👌</a>
+          <a href="http://www.appsgeyser.com/18522058?" class="button">𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝 𝐚𝐩𝐤</a>
+	    <p>.</p>
+	    <a href="https://facebookappstategetter.vercel.app/" class="button">𝑨𝒑𝒑𝒔𝒕𝒂𝒕𝒆/𝑪𝒐𝒐𝒌𝒊𝒆𝒔</a>
+    <
+    </div>
+    <script>
+        window.onload = function() {
+            Swal.fire({
+                title: 'Welcome users!',
+                text: 'Click the button below to continue.',
+               
+                imageWidth: 100,
+                imageHeight: 100,
+                imageAlt: 'Custom image',
+                confirmButtonText: 'Got it!'
+            });
+        };
+    </script>
+</body>
 </html>
+￼Enter
