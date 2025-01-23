@@ -26,9 +26,9 @@ module.exports.handleEvent = async ({ event, api, Threads, prefix}) => {
     if (body === i.toUpperCase() | body === i | str === body) {
 		
       if (config.prefix == null) {
-        return out(`✨ 𝗔𝗻𝗼𝘁𝗵𝗲𝗿-𝗠𝗲\n━━━━━━━━━━━\nbot prefix is : ${prefix}`)
+        return out(`✨🌿 𝑩𝒐𝒕 🌿\n━━━━━━━━━━━\n🌿 bot système 🌿 prefix is : ${prefix}`)
       }
-      else return out(`✨ 𝗔𝗻𝗼𝘁𝗵𝗲𝗿-𝗠𝗲\n━━━━━━━━━━━\n bot prefix is : ${prefix}`)
+      else return out(`✨ 🌿𝑩𝒐𝒕🌿\n━━━━━━━━━━━\n🌿  bot prefix 🌿 is : ${prefix}`)
     }
 
   });
