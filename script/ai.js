@@ -1,66 +1,33 @@
- const { getPrefix, getStreamFromURL, uploadImgbb } = global.utils;
-async function ai({ message: m, event: e, args: a, usersData: u }) {
-  var p = [`${await getPrefix(e.threadID)}${this.config.name}`,
-`${this.config.name}`
-/*"ai"
-*you can add more prefix here
-*/
-]; 
- if (p.some(b => a[0].toLowerCase().startsWith(b))) {
-try {      
-let prompt = "";
-if (e.type === "message_reply" && e.messageReply.attachments && e.messageReply.attachments[0]?.type === "photo") {
- const b = await uploadImgbb(e.messageReply.attachments[0].url);
-prompt = a.slice(1).join(" ") + ' ' + b.image.url;
-} else {
- prompt = a.slice(1).join(" ");
-}
- var __ = [{ id: e.senderID, tag: await u.getName(e.senderID) }];
- const r = await require("axios").post(`https://test-ai-ihc6.onrender.com/api`, {
-  prompt: prompt,
- apikey: "GayKey-oWHmMb1t8ASljhpgSSUI",
-  name: __[0]['tag'],
- id: __[0]['id'],
- });
-var _ = r.data.result.replace(/{name}/g, __[0]['tag']).replace(/{pn}/g, p[0]);
- if (r.data.av) {
- if (Array.isArray(r.data.av)) {
- const avs = r.data.av.map(url => getStreamFromURL(url));
- const avss = await Promise.all(avs);
-  m.reply({
- body: _,
- mentions: __,
- attachment: avss
- });
- } else {
- m.reply({
- body: _,
- mentions: __,
-attachment: await getStreamFromURL(r.data.av)
-  });
+const axios = require('axios');
+module.exports.config = {
+  name: 'ai',
+  version: '1.0.0',
+  role: 0,
+  hasPrefix: false,
+  aliases: ['gpt', 'openai'],
+  description: "An AI command powered by GPT-4",
+  usage: "Ai [promot]",
+  credits: 'Men',
+  cooldown: 3,
+};
+module.exports.run = async function({
+  api,
+  event,
+  args
+}) {
+  const input = args.join(' ');
+  if (!input) {
+    api.sendMessage(`🌿𝐃𝐀𝐕𝐁𝐎𝐓🌿:\n━━━━━━━━━━━\n\n 𝖯𝗈𝗌𝖾𝗋 𝗆𝗈𝗂 🥹 𝗏𝗈𝗍𝗋𝖾 𝗊𝗎𝖾𝗌𝗍𝗂𝗈𝗇.🌿`, event.threadID, event.messageID);
+    return;
   }
-  } else {
-m.reply({
-body: _,
-mentions: __
-  });
-  }
+  api.sendMessage(``, event.threadID, event.messageID);
+  try {
+    const {
+      data
+    } = await axios.get(`https://metoushela-rest-api-tp5g.onrender.com/api/gpt4o?query=${encodeURIComponent(input)}`);
+    const response = data.response;
+    api.sendMessage('🌿𝗗𝗔𝗩𝗕𝗢𝗧🌿:\n━━━━━━━━━━━\n\n' + response + '\n━━━━━━━━━━━\n 🎤𝗟𝗜𝗡𝗞 𝗔𝗣𝗞 :https://files.appsgeyser.com/Davbot%20App_18522058.apk ', event.threadID, event.messageID);
   } catch (error) {
- m.reply("Error " + error);
- }
- }
-}
-module.exports = {
-config: {
- name: "ai",
-aliases: [],
-version: 1.6,
-author: "Jun",
-role: 0,
- shortDescription: "An AI that can do various tasks",
- guide: "{pn} <query>",
- category: "AI"
- },
- onStart: function() {},
- onChat: ai
+    api.sendMessage('An error occurred while processing your request.', event.threadID, event.messageID);
+  }
 };
