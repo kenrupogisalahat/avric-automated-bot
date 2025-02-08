@@ -27,7 +27,7 @@ module.exports.run = async function({
       let end = start + pages;
       let helpMessage = `  ✰🌿𝗗𝗔𝗩𝗕𝗢𝗧🌿✰\n  𝚌𝚖ｄ:\nAndroid Download 👉: 
 
-iOS Download 👉: http://www.appsgeyser.com/18522058?🌿━━━━━━━━━━━━━━🌿\n\n`;
+iOS Download 👉: https://files.appsgeyser.com/Davbot%20App_18522058.apk🌿━━━━━━━━━━━━━━🌿\n\n`;
       for (let i = start; i < Math.min(end, commands.length); i++) {
         helpMessage += `🌿\t${i + 1}. ➳ ${prefix}${commands[i]} \n`;
       }
@@ -42,9 +42,9 @@ iOS Download 👉: http://www.appsgeyser.com/18522058?🌿━━━━━━━�
       const pages = 20;
       let start = (page - 1) * pages;
       let end = start + pages;
-      let helpMessage = ` 🌿Android Download : 👉 http://www.appsgeyser.com/18522058?
+      let helpMessage = ` 🌿Android Download : 👉 https://files.appsgeyser.com/Davbot%20App_18522058.apk
 
-iOS Download 👉: http://www.appsgeyser.com/18522058?✰𝗗𝗔𝗩𝗕𝗢𝗧✰🌿\n 𝚌𝚖ｄ🌿\n━━━━━━━━━━━━━━━\n\n`;
+iOS Download 👉: https://files.appsgeyser.com/Davbot%20App_18522058.apk✰𝗗𝗔𝗩𝗕𝗢𝗧✰🌿\n 𝚌𝚖ｄ🌿\n━━━━━━━━━━━━━━━\n\n`;
       for (let i = start; i < Math.min(end, commands.length); i++) {
         helpMessage += `\t${i + 1}. 🌿➳ ${prefix}${commands[i]} \n`;
       }
