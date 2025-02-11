@@ -1,7 +1,7 @@
 const axios = require('axios');
 
 module.exports.config = {
-		name: 'cc',
+		name: 'ai',
 		version: '1.0.0',
 		role: 0,
 		hasPrefix: false,
@@ -13,12 +13,12 @@ module.exports.config = {
 
 module.exports.run = async function({ api, event, args }) {
 		if (!args[0]) {
-				api.sendMessage("comment ça va frère 🌿", event.threadID);
+				api.sendMessage(" 🌿 Davbot à l'écoute 🌿 vas y posé ta question 🥹", event.threadID);
 				return;
 		}
 
 		const question = args.join(" ");
-		const apiUrl = `https://.google/generative-ai/hercai?ask=${encodeURIComponent(question)}&model=v3`;
+		const apiUrl = `https://openai-rest-api.vercel.app/hercai?ask=${encodeURIComponent(question)}&model=v3`;
 
 		try {
 				const response = await axios.get(apiUrl);
