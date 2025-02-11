@@ -1,33 +1,41 @@
 const axios = require('axios');
-module.exports.config = {
-  name: 'ai',
-  version: '1.0.0',
-  role: 0,
-  hasPrefix: false,
-  aliases: ['gpt', 'openai'],
-  description: "An AI command powered by GPT-4",
-  usage: "Ai [promot]",
-  credits: 'Men',
-  cooldown: 3,
-};
-module.exports.run = async function({
-  api,
-  event,
-  args
-}) {
-  const input = args.join(' ');
-  if (!input) {
-    api.sendMessage(`🌿𝐃𝐀𝐕𝐁𝐎𝐓🌿:\n━━━━━━━━━━━\n\n 𝖯𝗈𝗌𝖾𝗋 𝗆𝗈𝗂 🥹 𝗏𝗈𝗍𝗋𝖾 𝗊𝗎𝖾𝗌𝗍𝗂𝗈𝗇.🌿`, event.threadID, event.messageID);
-    return;
-  }
-  api.sendMessage(``, event.threadID, event.messageID);
-  try {
-    const {
-      data
-    } = await axios.get(`https://metoushela-rest-api-tp5g.onrender.com/api/gpt4o?query=${encodeURIComponent(input)}`);
-    const response = data.response;
-    api.sendMessage('🌿𝗗𝗔𝗩𝗕𝗢𝗧🌿:\n━━━━━━━━━━━\n\n' + response + '\n━━━━━━━━━━━\n 🎤𝗟𝗜𝗡𝗞 𝗔𝗣𝗞 :https://files.appsgeyser.com/Davbot%20App_18522058.apk ', event.threadID, event.messageID);
-  } catch (error) {
-    api.sendMessage('An error occurred while processing your request.', event.threadID, event.messageID);
-  }
+
+module.exports = {
+    description: "Ask the GPT4 a question(conversational)",
+    role: "user",
+    no_prefix: true,
+
+    credits: 'https://nemory-project.vercel.app/',
+    cooldown: 8,
+    execute(api, event, args, commands) {
+        if (args.length === 0) {
+            api.sendMessage("Please provide a question.", event.threadID, event.messageID);
+            api.setMessageReaction( ':heart:', event.messageID);
+            return;
+        }
+        
+        const myOten = event.senderID;
+        const question = args.join(" ");
+        const searchMessage = `Looking for an answer for "${question}"...`;
+        api.sendMessage(searchMessage, event.threadID, event.messageID);
+ 
+ 
+       const apiUrl = `https://ai-1stclass-nemory-project.vercel.app/api/llama?ask=${encodeURIComponent(question)}`;
+       
+
+        axios.get(apiUrl)
+            .then(response => {
+                const data = response.data;
+                const message = data.response || "Sorry, I couldn't understand the question.";
+
+                // sendinsg
+                setTimeout(() => {
+                    api.sendMessage(message, event.threadID, event.messageID);
+                }, 3000);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                api.sendMessage("Sorry, an error occurred while processing your request.", event.threadID);
+            });
+    }
 };
