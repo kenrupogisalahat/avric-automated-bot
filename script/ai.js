@@ -1,41 +1,35 @@
-const axios = require('axios');
-
-module.exports = {
-    description: "Ask the GPT4 a question(conversational)",
-    role: "user",
-    no_prefix: true,
-
-    credits: 'https://nemory-project.vercel.app/',
-    cooldown: 8,
-    execute(api, event, args, commands) {
-        if (args.length === 0) {
-            api.sendMessage("Please provide a question.", event.threadID, event.messageID);
-            api.setMessageReaction( ':heart:', event.messageID);
-            return;
-        }
-        
-        const myOten = event.senderID;
-        const question = args.join(" ");
-        const searchMessage = `Looking for an answer for "${question}"...`;
-        api.sendMessage(searchMessage, event.threadID, event.messageID);
- 
- 
-       const apiUrl = `https://ai-1stclass-nemory-project.vercel.app/api/llama?ask=${encodeURIComponent(question)}`;
-       
-
-        axios.get(apiUrl)
-            .then(response => {
-                const data = response.data;
-                const message = data.response || "Sorry, I couldn't understand the question.";
-
-                // sendinsg
-                setTimeout(() => {
-                    api.sendMessage(message, event.threadID, event.messageID);
-                }, 3000);
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                api.sendMessage("Sorry, an error occurred while processing your request.", event.threadID);
-            });
-    }
+module.exports.config = {
+  name: `ai`,
+  version: "1.1.0",
+  permission: 0,
+  credits: "Metoushela",
+  description: "",
+  prefix: false,
+  premium: false,
+  category: "without prefix",
+  usage: ``,
+  cooldowns: 3,
+  dependency: {
+    "axios": ""
+  }
 };
+
+module.exports.run = async function ({api, event, args}) {
+  try{
+  const axios = require('axios');
+  let ask = args.join(' ');
+  if (!ask) {
+    return api.sendMessage('🌿𝑫𝑨𝑽𝑩𝑶𝑻🌿\n━━━━━━━━━━━\n\nplease provide a question.', event.threadID, event.messageID)
+  }
+
+  const res = await axios.get(`https://kaiz-apis.gleeze.com/api/gpt-4o?q=${ask}&uid=${event.senderID}`);
+  const reply = res.data.response;
+  if (res.error) {
+    return api.sendMessage('having some unexpected error while fetching api.', event.threadID, event.messageID)
+  } else {
+    return api.sendMessage(`\n━━━━━━━━━━━\n\n${reply}`, event.threadID, event.messageID)
+  }
+  } catch (error) {
+    return api.sendMessage('having some unexpected error', event.threadID, event.messageID)
+  }
+                           }
