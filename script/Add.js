@@ -1,9 +1,15 @@
-var alice = {
-  name: "add",
-  type: "log:subscribe"
-}
 
-async function leiamnash({ alice, api, axios, bot, cache, database, event, font, fs, language, log, path, wrapper }) {
+module.exports.config = {
+  name: 'noti',
+  version: '1.0.0',
+  role: 0,
+  hasPrefix: true,
+  aliases: ['info'],
+  description: "Beginner's guide",
+  usage: "Help [page] or [command]",
+  credits: 'Develeoper',
+};
+module.exports.run =async function leiamnash({ alice, api, axios, bot, cache, database, event, font, fs, language, log, path, wrapper }) {
 try {
  if (event.logMessageData.addedParticipants.some(leiam => leiam.userFbId == bot.getCurrentUserID())) {
    const leiamA = (await bot.getUserInfo(event.author))[event.author].name;
