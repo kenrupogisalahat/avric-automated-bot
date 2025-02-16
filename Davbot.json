@@ -1,0 +1,13 @@
+{
+  "name": "davbot",
+  "prefix": "/",
+  "language": "français",
+  "timezone": "Asia/Manila",
+  "font": 11,
+  "listen": false,
+  "theme": 19,
+  "admin": [
+    "100092277325670"
+  ],
+  "developer": "David mpongo"
+}
