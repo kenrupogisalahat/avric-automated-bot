@@ -1,7 +1,3 @@
-const fs = require('fs');
-const path = require('path');
-
-const MAX_COINS = 9999999999999999; // 9 quadrillion
 
 module.exports = {
     name: 'checkcoins',
