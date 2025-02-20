@@ -13,14 +13,13 @@ module.exports.config = {
 
 module.exports.run = async function({ api, event, args }) {
 		if (!args[0]) {
-				api.sendMessage("DAVBOT 🌿 \n -----------------------------\n salut🌝 frère comment ça va⭐ j'espère que ça va 🌟vas y poser ta question 🥹", event.threadID);
+				api.sendMessage("\n DAVBOT 🌿 \n\n ----------------------------------------\n salut🌝 frère comment ça va⭐ j'espère que ça va 🌟vas y poser ta question 🥹", event.threadID);
 				return;
 		}
 
 		const question = args.join(" ");
 
-		const apiUrl = `C'est Celui-là 
-https://metoushela-openai-api.vercel.app/api/text/{prompt}`;
+		const apiUrl = `https://metoushela-openai-api.vercel.app/api/text/{prompt}`;
 
 		try {
 				const response = await axios.get(apiUrl);
