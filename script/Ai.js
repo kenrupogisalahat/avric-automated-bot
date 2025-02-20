@@ -1,33 +1,32 @@
-/* 
-If you encounter any errors, please give me feedback. Contact me on facebook https://facebook.com/joshg101
-*/
-
-const { get } = require('axios');
-let url = "https://ai-tools.replit.app";
+const axios = require('axios');
 
 module.exports.config = {
-		name: "ai",
-		version: "1.0.0",
+		name: 'ai',
+		version: '1.0.0',
 		role: 0,
 		hasPrefix: false,
-		credits: "Deku",
-		description: "Talk to AI with continuous conversation.",
-		aliases:  ['yaz','Yaz','AI','Ai'],
-		usages: "[prompt]",
-		cooldown: 0,
+		description: "An AI command powered by OpenAI",
+		usages: "",
+		credits: 'Developer',
+		cooldown: 5,
 };
 
 module.exports.run = async function({ api, event, args }) {
-		function sendMessage(msg) {
-				api.sendMessage(msg, event.threadID, event.messageID);
+		if (!args[0]) {
+				api.sendMessage("DAVBOT 🌿 \n -----------------------------\n salut🌝 frère comment ça va⭐ j'espère que ça va 🌟vas y poser ta question 🥹", event.threadID);
+				return;
 		}
-		if (!args[0]) return sendMessage('Please provide a question first.');
-		const prompt = args.join(" ");
+
+		const question = args.join(" ");
+
+		const apiUrl = `C'est Celui-là 
+https://metoushela-openai-api.vercel.app/api/text/{prompt}`;
+
 		try {
-				const response = await get(`${url}/gpt?prompt=${encodeURIComponent(prompt)}&uid=${event.senderID}`);
-				const data = response.data;
-				return sendMessage(data.gpt4);
+				const response = await axios.get(apiUrl);
+				api.sendMessage(response.data.reply, event.threadID);
 		} catch (error) {
-				return sendMessage(error.message);
+				console.error("Error fetching response from OpenAI API:", error);
+				api.sendMessage("An error occurred while processing your request. Please try again later.", event.threadID);
 		}
-}
+};
