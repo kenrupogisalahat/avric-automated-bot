@@ -7,18 +7,17 @@ module.exports.config = {
 		hasPrefix: false,
 		description: "An AI command powered by OpenAI",
 		usages: "",
-		credits: 'Developer',
+		credits: 'David mp',
 		cooldown: 5,
 };
 
 module.exports.run = async function({ api, event, args }) {
 		if (!args[0]) {
-				api.sendMessage("\n\n DAVBOT 🌿 \n\n ----------------------------------------\n\n salut🌝 frère comment ça va⭐ j'espère que ça va 🌟vas y poser ta question 🥹", event.threadID);
+				api.sendMessage("\n 🌿 𝑫𝑨𝑽𝑩𝑶𝑻 🌿\n salut 👋 frère 🫂 comment ça va 🌟 j'espère que tout vas bien 🌟 vay posé moi 🧠 ta question 🥹", event.threadID);
 				return;
 		}
 
 		const question = args.join(" ");
-
 		const apiUrl = `https://openai-rest-api.vercel.app/hercai?ask=${encodeURIComponent(question)}&model=v3`;
 
 		try {
