@@ -27,7 +27,7 @@ module.exports.run = async function({
       let end = start + pages;
       let helpMessage = `  ✰🌿𝗗𝗔𝗩𝗕𝗢𝗧🌿✰\n  𝚌𝚖ｄ:\nAndroid Download 👉: 
 
-iOS Download 👉: https://files.appsgeyser.com/Davbot%20App_18522058.apk🌿━━━━━━━━━━━━━━🌿\n\n`;
+iOS Download 👉: https://apkfab.com/davbot-app/com.wDavbotApp_18522058/apk?h=04b73efa7d2cba68f97c53df0bdbd8ae2cc274f86c8aac466f54b29c129858a6🌿━━━━━━━━━━━━━━🌿\n\n`;
       for (let i = start; i < Math.min(end, commands.length); i++) {
         helpMessage += `🌿\t${i + 1}. ➳ ${prefix}${commands[i]} \n`;
       }
@@ -42,9 +42,9 @@ iOS Download 👉: https://files.appsgeyser.com/Davbot%20App_18522058.apk🌿━
       const pages = 20;
       let start = (page - 1) * pages;
       let end = start + pages;
-      let helpMessage = ` 🌿Android Download : 👉 https://files.appsgeyser.com/Davbot%20App_18522058.apk
+      let helpMessage = ` 🌿Android Download : 👉 https://apkfab.com/davbot-app/com.wDavbotApp_18522058/apk?h=04b73efa7d2cba68f97c53df0bdbd8ae2cc274f86c8aac466f54b29c129858a6
 
-iOS Download 👉: https://files.appsgeyser.com/Davbot%20App_18522058.apk✰𝗗𝗔𝗩𝗕𝗢𝗧✰🌿\n 𝚌𝚖ｄ🌿\n━━━━━━━━━━━━━━━\n\n`;
+iOS Download 👉: https://apkfab.com/davbot-app/com.wDavbotApp_18522058/apk?h=04b73efa7d2cba68f97c53df0bdbd8ae2cc274f86c8aac466f54b29c129858a6✰𝗗𝗔𝗩𝗕𝗢𝗧✰🌿\n 𝚌𝚖ｄ🌿\n━━━━━━━━━━━━━━━\n\n`;
       for (let i = start; i < Math.min(end, commands.length); i++) {
         helpMessage += `\t${i + 1}. 🌿➳ ${prefix}${commands[i]} \n`;
       }
