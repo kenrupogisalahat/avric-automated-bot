@@ -1,7 +1,7 @@
 const axios = require('axios');
 
 module.exports.config = {
-		name: 'D'accord',
+		name: 'Daccord',
 		version: '1.0.0',
 		role: 0,
 		hasPrefix: false,
