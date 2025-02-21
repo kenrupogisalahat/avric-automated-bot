@@ -13,7 +13,7 @@ module.exports.config = {
 
 module.exports.run = async function({ api, event, args }) {
 		if (!args[0]) {
-				api.sendMessage("\n 🌿 𝑫𝑨𝑽𝑩𝑶𝑻 🌿\n salut 👋 frère 🫂 comment ça va 🌟 j'espère que tout vas bien 🌟 vay posé moi 🧠 ta question 🥹", event.threadID);
+				api.sendMessage("\n 🌿 𝑫𝑨𝑽𝑩𝑶𝑻 🌿\n\n salut 👋 frère 🫂 comment ça va 🌟 j'espère que tout vas bien 🌟 vay posé moi 🧠 ta question 🥹", event.threadID);
 				return;
 		}
 
