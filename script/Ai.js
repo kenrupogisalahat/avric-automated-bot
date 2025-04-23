@@ -18,7 +18,7 @@ module.exports.run = async function({ api, event, args }) {
 		}
 
 		const question = args.join(" ");
-		const apiUrl = `https://openai-rest-api.vercel.app/hercai?ask=${encodeURIComponent(question)}&model=v3`;
+		const apiUrl = `https://api.groq.com/openai/v1/chat/completions`;
 
 		try {
 				const response = await axios.get(apiUrl);
