@@ -26,5 +26,5 @@ module.exports.run = async function({ api, event, args }) {
 		} catch (error) {
 				console.error("Error fetching response from OpenAI API:", error);
 				api.sendMessage("An error occurred while processing your request. Please try again later.", event.threadID);
-		}
+	 	}
 };
