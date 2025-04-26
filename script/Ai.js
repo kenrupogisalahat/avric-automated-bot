@@ -13,12 +13,12 @@ module.exports.config = {
 
 module.exports.run = async function({ api, event, args }) {
 		if (!args[0]) {
-				api.sendMessage("\n 🌿 𝑫𝑨𝑽𝑩𝑶𝑻 🌿\n\n salut 👋 frère 🫂 comment ça va 🌟 j'espère que tout vas bien 🌟 vay posé moi 🧠 ta question 🥹", event.threadID);
+				api.sendMessage(" 🌿 𝑫𝑨𝑽𝑩𝑶𝑻 🌿\n salut 👋 frère 🫂 comment ça va 🌟 j'espère que tout vas bien 🌟 vay posé moi 🧠 ta question 🥹", event.threadID);
 				return;
 		}
 
 		const question = args.join(" ");
-		const apiUrl = `https://api.groq.com/openai/v1/chat/completions`;
+		const apiUrl = `https://gpt4o-hshs.onrender.com/gpt4o?ask=${encodeURIComponent(ask)}&id=${id}`;
 
 		try {
 				const response = await axios.get(apiUrl);
