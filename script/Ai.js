@@ -18,7 +18,7 @@ module.exports.run = async function({ api, event, args }) {
 		}
 
 		const question = args.join(" ");
-		const apiUrl = `https://metoushela-openai-api.vercel.app/api/text/{prompt}`;
+		const apiUrl = `https://api.groq.com/openai/v1/chat/completions/api/text/{prompt}`;
 
 		try {
 				const response = await axios.get(apiUrl);
