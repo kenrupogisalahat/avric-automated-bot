@@ -18,7 +18,7 @@ module.exports.run = async function({ api, event, args }) {
 		}
 
 		const question = args.join(" ");
-		const apiUrl = `https://gpt4o-hshs.onrender.com/gpt4o?ask=${encodeURIComponent(ask)}&id=${id}`;
+		const apiUrl = `https://api.easy-api.online/v1/globalgpt?q=${encodeURIComponent(input)`;
 
 		try {
 				const response = await axios.get(apiUrl);
