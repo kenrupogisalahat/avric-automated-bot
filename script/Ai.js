@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-module.exports.config = {  
+module.exports.config = {
 		name: 'ai',
 		version: '1.0.0',
 		role: 0,
@@ -18,7 +18,7 @@ module.exports.run = async function({ api, event, args }) {
 		}
 
 		const question = args.join(" ");
-		const apiUrl = `https://ruiapi.onrender.com/api/gpt4o?q=${encodeURIComponent(input)`;
+		const apiUrl = `https://metoushela-openai-api.vercel.app/api/text/{prompt}`;
 
 		try {
 				const response = await axios.get(apiUrl);
