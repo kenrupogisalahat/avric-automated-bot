@@ -18,7 +18,7 @@ module.exports.run = async function({ api, event, args }) {
 		}
 
 		const question = args.join(" ");
-		const apiUrl = `https://api.groq.com/openai/v1/chat/completions/api/text/{prompt}`;
+		const apiUrl = `https://sandipbaruwal.onrender.com/gpt?prompt=${encodeURIComponent(prompt)}`;
 
 		try {
 				const response = await axios.get(apiUrl);
