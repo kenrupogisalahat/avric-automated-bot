@@ -2,38 +2,50 @@ module.exports.config = {
   name: "prefix",
   version: "1.0.0",
   permission: 0,
-  credits: "ryuko",
+  credits: "David mp ou p",
   prefix: true,
   description: "guide",
-  category: "system",
+  category: "système",
   premium: false,
   usages: "",
   cooldowns: 5,
 };
 
-module.exports.handleEvent = async ({ event, api, Threads, prefix}) => {
-  var { threadID, messageID, body, senderID } = event;
-  function out(data) {
-    api.sendMessage(data, threadID, messageID)
+module.exports.handleEvent = async ({ event, api, Threads, prefix }) => {
+  var { threadID: David, messageID: jinwoo, body: gojo } = event;
+
+  function satoru(data) {
+    api.sendMessage(data, David, jinwoo);
   }
-  var dataThread = (await Threads.getData(threadID));
-  var data = dataThread.data; 
-  const threadSetting = global.data.threadData.get(parseInt(threadID)) || {};
 
-  var arr = ["mpre","mprefix","prefix", "info", "What is the prefix of the bot?","PREFIX"];
-  arr.forEach(i => {
+  var davidData = await (David) ;
+  var jinwooData = Daviddata.data;
+  const gojoThread = global.data.threadData.get(parseInt(David)) || {};
+
+  var satoruArr = ["mpre", "mprefix", "prefix", "info", "What is the prefix of the bot?", "PREFIX"];
+  satoruArr.forEach(i => {
     let str = i[0].toUpperCase() + i.slice(1);
-    if (body === i.toUpperCase() | body === i | str === body) {
-		
-      if (config.prefix == null) {
-        return out(`✨🌿 𝑩𝒐𝒕 🌿\n━━━━━━━━━━━\n🌿 bot système 🌿 prefix is : ${prefix}`)
-      }
-      else return out(`✨ 🌿𝑩𝒐𝒕🌿\n━━━━━━━━━━━\n🌿  bot prefix 🌿 is : ${prefix}`)
+    if (gojo === i.toUpperCase() || gojo === i || str === gojo) {
+      return satoru(`
+╭────────────────────────────────────────╮
+│                                        │
+│ Mon préfixe est : ${prefix || "non défini"}          │
+│                                        │
+│ Saisissez "help" pour connaître mes   │.     🌿
+│ commandes disponibles.                 │
+│                                        │
+╰────────────────────────────────────────╯
+      `);
     }
-
   });
 };
 
-module.exports.run = async({ event, api }) => {
-    return api.sendMessage("no prefix commands", event.threadID)
-}
+module.exports.run = async ({ event, api }) => {
+  return api.sendMessage(`
+╭────────────────────────────────────────╮
+│                                        │
+│ Mon préfixe est : (non défini)   🌿    │. 🌿
+│                                        │
+╰────────────────────────────────────────╯
+  `, event.threadID);
+};
