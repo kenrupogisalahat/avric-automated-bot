@@ -1,1 +1,28 @@
-const gojo = process.env.GOOGLE_API_KEY; // Clé API stockée en variable d'environnement const messie = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${gojo}`; const axios = require('axios'); // Importation explicite d'axios module.exports.config = { // ... (configuration inchangée) }; module.exports.run = async function ({ api, event }) { const body = event.body || ""; const triggerWords = ["ai", "davbot"]; const matched = triggerWords.some(word => body.toLowerCase().startsWith(word)); if (!matched) return; const question = body.replace(/^(ai|Davbot)/i, "").trim(); if (!question) { // ... (message inchangé) } const predefinedResponses = [ // ... (réponses inchangées) ]; const isCreationQuestion = /^(créé|créateur|origine|qui t'a créé)/i.test(question); try { const corps = { contents: [{ role: "user", parts: [{ text: question }] }], systemInstruction: { role: "system", parts: [{ text: isCreationQuestion ? "Répondre avec une phrase aléatoire parmi les suivantes :" : "" }] } }; const réponse = await axios.post(messie, corps, { headers: { 'Content-Type': 'application/json' } }); const texte = réponse.data?.candidates?.[0]?.content?.parts?.[0]?.text || "Aucune réponse générée."; const finalResponse = isCreationQuestion ? predefinedResponses[Math.floor(Math.random() * predefinedResponses.length)] : texte; return api.sendMessage( `𝑫𝒂𝒗𝒃𝒐𝒕 ✰\n_______________________________\n${finalResponse}\n________________________`, event.threadID, event.messageID ); } catch (erreur) { console.error("Erreur Gemini API:", erreur); // Message d'erreur plus informatif return api.sendMessage( '𝑫𝒂𝒗𝒃𝒐𝒕 ✰\n_______________________________\nUne erreur est survenue en contactant Gemini API.\nVeuillez réessayer plus tard.\n________________________', event.threadID, event.messageID ); } }; 
+module.exports.config = {
+		name: 'ai',
+		version: '1.0.0',
+		role: 0,
+		hasPrefix: false,
+		description: "An AI command powered by OpenAI",
+		usages: "",
+		credits: 'David mp',
+		cooldown: 5,
+};
+
+module.exports.run = async function({ api, event, args }) {
+		if (!args[0]) {
+				api.sendMessage("\n 🌿 𝑫𝑨𝑽𝑩𝑶𝑻 🌿\n\n salut 👋 frère 🫂 comment ça va 🌟 j'espère que tout vas bien 🌟 vay posé moi 🧠 ta question 🥹", event.threadID);
+				return;
+		}
+
+		const question = args.join(" ");
+		const apiUrl = `https://kaiz-apis.gleeze.com/api/gpt-4o?q=${question}&uid=${event.senderID}`;
+
+		try {
+				const response = await axios.get(apiUrl);
+				api.sendMessage(response.data.reply, event.threadID);
+		} catch (error) {
+				console.error("Error fetching response from OpenAI API:", error);
+				api.sendMessage("An error occurred while processing your request. Please try again later.", event.threadID);
+		}
+};
