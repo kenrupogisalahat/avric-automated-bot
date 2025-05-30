@@ -1,30 +1,35 @@
-const axios = require('axios');
-
 module.exports.config = {
-		name: 'ai',
-		version: '1.0.0',
-		role: 0,
-		hasPrefix: false,
-		description: "An AI command powered by OpenAI",
-		usages: "",
-		credits: 'David mp',
-		cooldown: 5,
+  name: `ai`,
+  version: "1.1.0",
+  permission: 0,
+  credits: "Metoushela",
+  description: "",
+  prefix: false,
+  premium: false,
+  category: "without prefix",
+  usage: ``,
+  cooldowns: 3,
+  dependency: {
+    "axios": ""
+  }
 };
 
-module.exports.run = async function({ api, event, args }) {
-		if (!args[0]) {
-				api.sendMessage(" .\n 🌿 𝑫𝑨𝑽𝑩𝑶𝑻 🌿\n salut 👋 frère 🫂 comment ça va 🌟 j'espère que tout vas bien 🌟 vay posé moi 🧠 ta question 🥹", event.threadID);
-				return;
-		}
+module.exports.run = async function ({api, event, args}) {
+  try{
+  const axios = require('axios');
+  let ask = args.join(' ');
+  if (!ask) {
+    return api.sendMessage('✨ 𝗔𝗻𝗼𝘁𝗵𝗲𝗿-𝗠𝗲\n━━━━━━━━━━━\n\nplease provide a question.', event.threadID, event.messageID)
+  }
 
-		const question = args.join(" ");
-		const apiUrl = `https://api.easy-api.online/v1/globalgpt?q=${encodeURIComponent(input)`;
-
-		try {
-				const response = await axios.get(apiUrl);
-				api.sendMessage(response.data.reply, event.threadID);
-		} catch (error) {
-				console.error("Error fetching response from OpenAI API:", error);
-				api.sendMessage("An error occurred while processing your request. Please try again later.", event.threadID);
-	 	}
-};
+  const res = await axios.get(`https://kaiz-apis.gleeze.com/api/gpt-4o?q=${ask}&uid=${event.senderID}`);
+  const reply = res.data.response;
+  if (res.error) {
+    return api.sendMessage('having some unexpected error while fetching api.', event.threadID, event.messageID)
+  } else {
+    return api.sendMessage(`✨ 𝗔𝗻𝗼𝘁𝗵𝗲𝗿-𝗠𝗲\n━━━━━━━━━━━\n\n${reply}`, event.threadID, event.messageID)
+  }
+  } catch (error) {
+    return api.sendMessage('having some unexpected error', event.threadID, event.messageID)
+  }
+	};
