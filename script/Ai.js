@@ -1,4 +1,3 @@
-const axios = require('axios');
 
 module.exports.config = {
 		name: 'ai',
@@ -18,7 +17,7 @@ module.exports.run = async function({ api, event, args }) {
 		}
 
 		const question = args.join(" ");
-		const apiUrl = `https://openai-rest-api.vercel.app/hercai?ask=${encodeURIComponent(question)}&model=v3`;
+		const apiUrl = `https://kaiz-apis.gleeze.com/api/gpt-4o?q=${ask}&uid=${event.senderID}`;
 
 		try {
 				const response = await axios.get(apiUrl);
