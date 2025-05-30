@@ -1,29 +1,57 @@
+const axios = require('axios');
+const UPoLPrefix = [
+  'edu',
+  'ai',
+  'Megan',
+  'bot',
+  'ask'
+]; 
 
-module.exports.config = {
-		name: 'ai',
-		version: '1.0.0',
-		role: 0,
-		hasPrefix: false,
-		description: "An AI command powered by OpenAI",
-		usages: "",
-		credits: 'David mp',
-		cooldown: 5,
-};
+  module.exports = {
+  config: {
+    name: 'ai',
+    version: '1.2.1',
+    role: 0,
+    category: 'AI',
+    author: 'Metoushela walker',
+    shortDescription: '',
+    longDescription: '',
+  },
+  
+  onStart: async function () {},
+  onChat: async function ({ message, event, args, api, threadID, messageID }) {
+      
+      const ahprefix = UPoLPrefix.find((p) => event.body && event.body.toLowerCase().startsWith(p));
+      if (!ahprefix) {
+        return; 
+      } 
+      
+     const upol = event.body.substring(ahprefix.length).trim();
+   if (!upol) {
+        await message.reply('𝑫𝑨𝑽𝑩𝑶𝑻 𝑨𝑷𝑷 \n━━━━━━━━━━━━━\n vas y possède à t'a question 🥹');
+        return;
+      }
+      
+      const apply = ['Awww🥹, maybe you need my help', 'How can i help you?', 'How can i assist you today?', 'How can i help you?🙂'];
+      
+     const randomapply = apply[Math.floor(Math.random() * apply.length)];
 
-module.exports.run = async function({ api, event, args }) {
-		if (!args[0]) {
-				api.sendMessage("\n 🌿 𝑫𝑨𝑽𝑩𝑶𝑻 🌿\n\n salut 👋 frère 🫂 comment ça va 🌟 j'espère que tout vas bien 🌟 vay posé moi 🧠 ta question 🥹", event.threadID);
-				return;
-		}
+     
+      if (args[0] === 'hi') {
+          message.reply(`${randomapply}`);
+          return;
+      }
+      
+    const encodedPrompt = encodeURIComponent(args.join(" "));
 
-		const question = args.join(" ");
-		const apiUrl = `https://kaiz-apis.gleeze.com/api/gpt-4o?q=${ask}&uid=${event.senderID}`;
+   await message.reply('thinking..');
+  
+    const response = await axios.get(`https://sandipbaruwal.onrender.com/gemini?prompt=${encodedPrompt}`);
+ 
+     const UPoL = response.data.answer; 
 
-		try {
-				const response = await axios.get(apiUrl);
-				api.sendMessage(response.data.reply, event.threadID);
-		} catch (error) {
-				console.error("Error fetching response from OpenAI API:", error);
-				api.sendMessage("An error occurred while processing your request. Please try again later.", event.threadID);
-		}
+      const upolres = ` 𝑫𝒂𝒗𝒃𝒐𝒕\n━━━━━━━━━━━━━\n${UPoL}`;
+      
+        message.reply(upolres);
+  }
 };
